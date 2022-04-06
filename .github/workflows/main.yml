@@ -50,8 +50,8 @@ jobs:
       
       - name: Push to amazon ECR
         env:
-          ECR_REGISTRY: public.ecr.aws/g8o4g1c2
-          ECR_REPOSITORY: orange-cable
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: spring-demo
           IMAGE_TAG: 1.0
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
