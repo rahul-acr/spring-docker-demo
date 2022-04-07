@@ -60,7 +60,7 @@ jobs:
       - name: Deploy to Amazon ECS
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-            task-definition: task-definition.json
+            task-definition: .github/workflows/task-definition.json
             service: junior
             cluster: comb
             wait-for-service-stability: true
