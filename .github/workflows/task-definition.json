@@ -3,7 +3,7 @@
     "containerDefinitions": [
         {
             "name": "spring-boot-c1",
-            "image": "687124797789.dkr.ecr.ap-south-1.amazonaws.com/spring-demo:latest",
+            "image": "public.ecr.aws/g8o4g1c2/orange-cable:latest",
             "cpu": 0,
             "links": [],
             "portMappings": [
