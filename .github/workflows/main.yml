@@ -24,10 +24,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
       
       - uses: actions/setup-java@v3.1.0
         with:
@@ -48,19 +44,19 @@ jobs:
       - name: Package with maven
         run: mvn -B package
       
-      #- name: Push to amazon ECR
-      #  env:
-      #    ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-      #    ECR_REPOSITORY: spring-demo
-      #    IMAGE_TAG: latest
-        #run: |
-        #  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        #  docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+      - name: Push to amazon ECR
+        env:
+          ECR_REGISTRY: public.ecr.aws/g8o4g1c2
+          ECR_REPOSITORY: orange-cable
+          IMAGE_TAG: latest
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
-      - name: Deploy to Amazon ECS
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-        with:
-            task-definition: .github/workflows/task-definition.json
-            service: junior
-            cluster: comb
-            wait-for-service-stability: true
+      #- name: Deploy to Amazon ECS
+      #  uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      #  with:
+      #      task-definition: .github/workflows/task-definition.json
+      #      service: junior
+      #      cluster: comb
+      #      wait-for-service-stability: true
