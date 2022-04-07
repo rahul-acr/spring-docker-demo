@@ -30,20 +30,24 @@ jobs:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '17'
  
+      - name: Package with maven
+        run: mvn -B -q package
+ 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          registry: public.ecr.aws
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
         
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-        
-      - name: Package with maven
-        run: mvn -B package
+      - name: Login to ECR
+        uses: docker/login-action@v1
+        with:
+          registry: public.ecr.aws/g8o4g1c2
+          username: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        env:
+          AWS_REGION: ap-south-1
       
       - name: Push to amazon ECR
         env:
