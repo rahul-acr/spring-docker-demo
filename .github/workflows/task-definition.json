@@ -1,0 +1,61 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:687124797789:task-definition/springboot-docker-demo:3",
+    "containerDefinitions": [
+        {
+            "name": "spring-boot-c1",
+            "image": "687124797789.dkr.ecr.ap-south-1.amazonaws.com/spring-demo:latest",
+            "cpu": 0,
+            "links": [],
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "entryPoint": [],
+            "command": [],
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "dnsServers": [],
+            "dnsSearchDomains": [],
+            "dockerSecurityOptions": [],
+            "dockerLabels": {},
+            "systemControls": []
+        }
+    ],
+    "family": "springboot-docker-demo",
+    "networkMode": "bridge",
+    "revision": 3,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EXTERNAL",
+        "EC2"
+    ],
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "1024",
+    "memory": "500",
+    "registeredAt": "2022-04-07T03:05:02.144000+00:00",
+    "registeredBy": "arn:aws:iam::687124797789:root"
+}
