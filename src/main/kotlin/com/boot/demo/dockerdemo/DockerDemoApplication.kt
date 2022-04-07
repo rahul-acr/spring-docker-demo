@@ -18,6 +18,6 @@ fun main(args: Array<String>) {
 class HelloController{
 
 	@GetMapping
-	fun hello(): String = "Hello World!"
+	fun hello(): String = "Hello World from AWS ECS!"
 
 }
