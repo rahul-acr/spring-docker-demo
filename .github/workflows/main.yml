@@ -59,10 +59,10 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
-      - name: Deploy to Amazon ECS
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-        with:
-            task-definition: .github/workflows/task-definition.json
-            service: junior
-            cluster: comb
-            wait-for-service-stability: true
+#       - name: Deploy to Amazon ECS
+#         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+#         with:
+#             task-definition: .github/workflows/task-definition.json
+#             service: junior
+#             cluster: comb
+#             wait-for-service-stability: true
